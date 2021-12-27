@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter quote formatter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    *, :before, :after {
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 60px;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: dimgray;
+      color: #000D;
+      font-family: Vollkorn, serif;
+    }
+    main {
+      background-color: white;
+      width: 1200px;
+      height: 675px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    blockquote {
+      margin: 0 auto;
+      padding: 1em 1em 0.25em;
+      position: relative;
+    }
+    blockquote:before, blockquote:after {
+      position: absolute;
+    }
+    blockquote:before {
+      font-size:1.5em;
+      content:"\201C";
+      margin: -0.25em 0 0 -0.75ch;
+    }
+    blockquote:after {
+      font-size:1.5em;
+      content:"\201D";
+      margin: -0.25em 0 0;
+    }
+    cite {
+      display: block;
+      min-height: 1ex;
+      width: 100%;
+      font-size: 0.5em;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    #fontSize {
+      width: 1200px;
+    }
+  </style>
+</head>
+<body>
+  <input type="range" min="1" max="100" value="40" class="slider" id="fontSize">
+  <main>
+    <blockquote id="body" contenteditable="true" data-multiline>Quote text here.</blockquote>
+    <cite contenteditable="true">Firstname Lastname</cite>
+  </main>
+  <script>
+    document.getElementById("fontSize").addEventListener("change", e => {
+      document.body.style.fontSize = `${e.target.value}px`
+    })
+  </script>
+</body>
+</html>
